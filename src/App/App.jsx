@@ -39,6 +39,19 @@ function App() {
 
     }
   ])
+  function addTrack(track) {
+    const existingTrack = playlistTracks.find((t) => t.id === track.id);
+    const newTrack = playlistTracks.concat(track);
+    if (existingTrack) {
+      console.log("Track is there")
+    } else {
+      setPlaylistTracks(newTrack);
+    }
+  }
+  function removeTrack(track) {
+    const exisitingTrack = playlistTracks.filter((t) => t.id !== track.id);
+    
+  }
   
   return (
     <>
@@ -52,7 +65,7 @@ function App() {
         </div>
         <div className="appPlaylist">
         <img src={DarkMode} alt="dance1" className='danceOne' />
-      <SearchResults userSearchResults={searchResults} />
+      <SearchResults userSearchResults={searchResults} onAdd={addTrack} />
       <Playlist playlistName={playlistName} playlistTracks={playlistTracks} />
       <img src={LightMode} alt="dance2" className='danceTwo'/>
       </div>
