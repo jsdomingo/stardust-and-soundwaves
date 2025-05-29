@@ -1,6 +1,8 @@
-export default function Track(){
 import styles from '../Track/Track.module.css';
+
+export default function Track(){
+
     return(
-        <h4 className="track">Track</h4>
+        <h4 className={styles.track}>Track</h4>
     )
 }
