@@ -1,0 +1,29 @@
+.track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.trackInformation {
+    flex-grow: 1;
+}
+
+.trackTitle {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.trackDescription {
+    margin: 5px 0;
+    color: #666;
+}
+
+.trackAction {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 0 10px;
+}

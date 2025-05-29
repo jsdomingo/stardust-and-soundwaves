@@ -70,6 +70,7 @@
   /* border: 15px solid yellow; */
 }
 
-.danceOne .danceTwo {
+.danceOne, .danceTwo {
   object-fit: cover;
+  background-color: lightblue;
 }

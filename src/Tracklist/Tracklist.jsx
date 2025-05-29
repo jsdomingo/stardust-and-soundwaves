@@ -1,13 +1,19 @@
 import Track from '../Track/Track'
 import styles from '../Tracklist/Tracklist.module.css'
 
-export default function Tracklist(){
+export default function Tracklist(props){
+    console.log('Tracklist props:', props.userSearchResults);
     return(
-        <div className={styles.tracklist}>
+      <div className={styles.tracklist}>
         <h3>Tracklist</h3>
-        <Track/>
-        <Track/>
-        <Track/>
-        </div>
-    )
-}
+        {props.userSearchResults && props.userSearchResults.length > 0 ? (
+          props.userSearchResults.map((track) => (
+            <Track track={track} key={track.id} />
+          ))
+        ) : (
+          <p>No tracks available</p>
+        )}
+      </div>
+    );
+  }
+  
