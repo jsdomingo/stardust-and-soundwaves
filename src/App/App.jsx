@@ -59,6 +59,16 @@ function App() {
     props.onRemove(props.track);
   }
 
+  function updatePlaylistName(name) {
+    setPlaylistName(name);
+  }
+
+  function savePlaylist(){
+     const trackURIs = playlistTracks.map((t) => t.uri);
+  }
+
+  function search(term){
+    console.log(term);
   }
   
   return (
@@ -78,6 +88,8 @@ function App() {
       playlistName={playlistName} 
       playlistTracks={playlistTracks} 
       onRemove={removeTrack} 
+      onNameChange={updatePlaylistName} 
+      onSave={savePlaylist}
       />
       <img src={LightMode} alt="dance2" className='danceTwo'/>
       </div>
