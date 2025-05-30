@@ -50,7 +50,15 @@ function App() {
   }
   function removeTrack(track) {
     const exisitingTrack = playlistTracks.filter((t) => t.id !== track.id);
-    
+    setPlaylistTracks(exisitingTrack);
+  }
+  function passTrackToRemove(){
+    props.onRemove(props.track);
+  }
+  function passTrackToRemove(){
+    props.onRemove(props.track);
+  }
+
   }
   
   return (
@@ -61,12 +69,16 @@ function App() {
 
       <div className="app">
         <div  className='searchBar'>
-        <SearchBar />
+        <SearchBar onSearch={search} />
         </div>
         <div className="appPlaylist">
         <img src={DarkMode} alt="dance1" className='danceOne' />
       <SearchResults userSearchResults={searchResults} onAdd={addTrack} />
-      <Playlist playlistName={playlistName} playlistTracks={playlistTracks} />
+      <Playlist 
+      playlistName={playlistName} 
+      playlistTracks={playlistTracks} 
+      onRemove={removeTrack} 
+      />
       <img src={LightMode} alt="dance2" className='danceTwo'/>
       </div>
       </div>

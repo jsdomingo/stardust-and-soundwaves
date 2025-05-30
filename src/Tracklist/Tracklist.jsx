@@ -8,7 +8,7 @@ export default function Tracklist(props){
         <h3>Tracklist</h3>
         {props.userSearchResults && props.userSearchResults.length > 0 ? (
           props.userSearchResults.map((track) => (
-            <Track track={track} key={track.id} isRemoval={props.isRemoval} onAdd={props.onAdd} />
+            <Track track={track} key={track.id} isRemoval={props.isRemoval} onAdd={props.onAdd} onRemoval={props.onRemove} />
           ))
         ) : (
           <p>No tracks available</p>
