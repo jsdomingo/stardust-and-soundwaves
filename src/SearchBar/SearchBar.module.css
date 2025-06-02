@@ -18,37 +18,28 @@
     border: 1px dotted red;
 }
 
-
-.searchBtn{
+.searchBtn {
     background-color: #d995f834;
     width: 8.11rem;
-    border-radius: 54px;
-    cursor: pointer;
-    text-align: center;
-    font-size: 0.833rem;
     padding: 0.77rem 0;
-    transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    border-radius: 54px;
+    font-size: 0.833rem;
+    text-align: center;
     text-transform: uppercase;
+    cursor: pointer;
     border: none;
-}
-
-.searchBtn:hover{
-    background-color: #d995f8;
-}
-
-.searchBtn:focus,
-.searchBtn:active {
-  outline: none;
-  border: none;
-}
-
-.searchBtn {
-    transition:
-      transform 0.15s ease 0.1s, /* delay of 0.1s */
-      background-color 0.25s ease 0.1s,
-      box-shadow 0.15s ease 0.1s;
+    outline: none;
+    transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
-   
+  
+  .searchBtn:hover {
+    background-color: #d995f8;
+  }
+  
+  .searchBtn:focus {
+    outline: none;
+  }
+  
   .searchBtn:active {
     background-color: #b56ed8;
     transform: scale(0.95);
