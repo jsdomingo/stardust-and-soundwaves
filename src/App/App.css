@@ -87,11 +87,6 @@
   grid-template-columns: 1fr 1.8fr 1.8fr 1fr;
   max-width: 100%;
   gap: 16px;
-  /* padding-top: 2rem; */
-
-    /* Add this: */
-    max-height: 570px;       /* or whatever height you prefer */
-    overflow-y: auto;
 }
 
 /* Style all direct children of .appPlaylist */
@@ -177,6 +172,8 @@
     grid-template-columns: 1fr 1.8fr;  /* two columns */
     grid-template-rows: auto auto;     /* two rows */
     gap: 16px;
+    max-height: 570px;       
+    overflow-y: auto;
   }
 
   .danceOne {
@@ -259,5 +256,3 @@
     margin-top: 80px;
   }
 }
-
-
