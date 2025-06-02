@@ -15,7 +15,7 @@ export default function SearchBar(props) {
 
   return (
     <div className={styles.searchBar}>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.searchForm} onSubmit={handleSubmit}>
         <input
           className={styles.searchInput}
           placeholder="Enter Your Vibe"
