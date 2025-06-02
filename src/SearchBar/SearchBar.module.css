@@ -27,13 +27,30 @@
     text-align: center;
     font-size: 0.833rem;
     padding: 0.77rem 0;
-    transition: background-color .25s;
+    transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
     text-transform: uppercase;
-    
+    border: none;
 }
 
 .searchBtn:hover{
     background-color: #d995f8;
-    border: none;
-    
 }
+
+.searchBtn:focus,
+.searchBtn:active {
+  outline: none;
+  border: none;
+}
+
+.searchBtn {
+    transition:
+      transform 0.15s ease 0.1s, /* delay of 0.1s */
+      background-color 0.25s ease 0.1s,
+      box-shadow 0.15s ease 0.1s;
+  }
+   
+  .searchBtn:active {
+    background-color: #b56ed8;
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
