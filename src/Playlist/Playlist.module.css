@@ -1,0 +1,50 @@
+.playlist {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+    gap: 8px; 
+  }
+  
+  .titleInput {
+    all: unset;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    display: block;
+    cursor: text;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 4px;
+
+
+  }
+
+
+  .save{
+    background-color: #b56ed8;
+    padding: 0.77rem 0;
+    border-radius: 54px;
+    font-size: 1 rem;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    margin-top: 10px;
+  }
+  
+  .save:hover {
+    background-color: #d995f8;
+  }
+  
+  .save:focus {
+    outline: none;
+  }
+  
+  .save:active {
+    background-color: #d995f834;
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+  }

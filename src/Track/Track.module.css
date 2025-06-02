@@ -1,29 +1,45 @@
 .track {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: flex-start;
     padding: 10px;
     border-bottom: 1px solid #ddd;
-}
-
-.trackInformation {
+    max-height: 100px;
+  }
+  
+  .trackInfoWrapper {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
-}
-
-.trackTitle {
+    margin-right: 10px;
+  }
+  
+  .trackInformation {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .trackTitle {
     margin: 0;
     font-size: 1.1em;
-}
-
-.trackDescription {
-    margin: 5px 0;
+  }
+  
+  .trackDescription {
+    margin: 5px 0 0 0;
     color: #666;
-}
-
-.trackAction {
+  }
+  
+  .trackActionWrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .trackAction {
     background: none;
     border: none;
     font-size: 1.5em;
     cursor: pointer;
     padding: 0 10px;
-}
+  }
+  
