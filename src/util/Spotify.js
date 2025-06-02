@@ -1,6 +1,8 @@
 let accessToken;
 const clientID = 'INSERT_YOUR_CLIENT_ID';
 const redirectURI="INSERT_YOUR_URI";
+const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+const redirectUri = import.meta.env.VITE_SPOTIFY_REDIRECT_URI;
 
 const Spotify = {
     getAccessToken() {
