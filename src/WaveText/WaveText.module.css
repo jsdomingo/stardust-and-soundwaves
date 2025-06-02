@@ -1,0 +1,28 @@
+ 
+  .letter {
+    display: inline-block;
+    line-height: 1em;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: none;
+  }
+  
+  .letter.animate {
+    animation-name: wave;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-delay: var(--delay);
+  }
+  
+  @keyframes wave {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
