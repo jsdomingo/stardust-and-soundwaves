@@ -73,9 +73,6 @@ function App() {
   function passTrackToRemove(){
     props.onRemove(props.track);
   }
-  function passTrackToRemove(){
-    props.onRemove(props.track);
-  }
 
   function updatePlaylistName(name) {
     setPlaylistName(name);
