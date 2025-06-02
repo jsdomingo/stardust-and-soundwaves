@@ -1,21 +1,26 @@
 #root {
   max-width: 1280px;
+  min-width: 420px;
+  max-height: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
-.titleBox{
-  position: absolute;
+.webpage {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+}
+
+.titleBox{
   height: 65px;
-  /* border: 15px solid green; */
   display: flex;
   justify-content: center;
   align-items: center;
   background: purple;
+  z-index: 1000; /* Ensures it stays above other elements */
 
 }
 
@@ -29,48 +34,51 @@
 }
 
 .app {
-  border: 2px solid rgb(119, 0, 255); 
+  display: flex;
+  flex-direction: column;
+  margin: 64px 64px 64px; /* top, right/left, bottom */
 }
 
 .searchBar{
-  border: 15px solid green;
+  margin: 0;
+  padding: 0;
 }
 
 .appPlaylist {
-  border: 15px solid green;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1.8fr 1.8fr 1fr;
   max-width: 100%;
   gap: 16px;
+  padding-top: 2rem;
 }
 
 /* Style all direct children of .appPlaylist */
 .appPlaylist > * {
-  border: 1px dashed red;          /* visual debug aid */
   width: 100%;                     /* force children to fit their column */
   min-width: 0;                    /* allow shrinking */
   box-sizing: border-box;          /* includes padding/border in sizing */
 }
 
-.track{
-  /* border: 15px solid blue; */
-
-}
-
-.tracklist{
-  /* border: 15px solid pink; */
-}
-
-.playlist{
-  /* border: 15px solid orange; */
-}
-
-
-.searchResults {
-  /* border: 15px solid yellow; */
-}
 
 .danceOne, .danceTwo {
   object-fit: cover;
-  background-color: lightblue;
+  display: block;
+  margin: auto; 
+}
+
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 900px) {
+  .appPlaylist {
+    grid-template-columns: 1fr; /* stack items vertically */
+  }
+  .danceOne, .danceTwo {
+    max-height: 330px;
+    max-width: 220px;
+  }
+  .searchBar{
+    max-height: 300px;
+    margin-top: 100px;
+  }
+
 }

@@ -70,9 +70,6 @@ function App() {
     const exisitingTrack = playlistTracks.filter((t) => t.id !== track.id);
     setPlaylistTracks(exisitingTrack);
   }
-  function passTrackToRemove(){
-    props.onRemove(props.track);
-  }
 
   function updatePlaylistName(name) {
     setPlaylistName(name);
@@ -91,7 +88,7 @@ function App() {
   }
   
   return (
-    <>
+    <div className='webpage'>
       <div className="titleBox">
         <h1 className="title">Star<span className="highlight">dust & Sound</span>waves</h1>
       </div>
@@ -113,7 +110,7 @@ function App() {
           <img src={LightMode} alt="dance2" className='danceTwo'/>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
