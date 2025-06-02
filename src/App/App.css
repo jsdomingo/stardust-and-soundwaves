@@ -74,14 +74,12 @@
 .app {
   display: flex;
   flex-direction: column;
-  border: 5px solid blueviolet;
 }
 
 .searchBar{
   margin: 0;
   padding: 0;
   height: auto;
-  border: 5px solid pink;
 }
 
 .appPlaylist {
@@ -90,7 +88,6 @@
   max-width: 100%;
   gap: 16px;
   /* padding-top: 2rem; */
-  border: 5px solid orange;
 
     /* Add this: */
     max-height: 570px;       /* or whatever height you prefer */
