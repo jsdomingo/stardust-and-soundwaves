@@ -31,15 +31,13 @@ function App() {
   const waveDuration = 2000;
 
   useEffect(() => {
-    async function authenticate() {
+    async function checkToken() {
       const accessToken = await Spotify.getAccessToken();
-      if (!accessToken) {
-        Spotify.getAuthorisation();
-      } else {
+      if (accessToken) {
         setToken(accessToken);
       }
     }
-    authenticate();
+    checkToken();
   }, []);
 
   useEffect(() => {
@@ -71,14 +69,25 @@ function App() {
 
   function savePlaylist(){
     const trackURIs = playlistTracks.map((t) => t.uri);
+    // You might want to add your save logic here
   }
 
-  function search(term){
-    if (!token) {
-      console.error('No access token available for search');
-      return;
+  async function search(term) {
+    let accessToken = token;
+
+    if (!accessToken) {
+      accessToken = await Spotify.getAccessToken();
+
+      if (!accessToken) {
+        console.log("No access token: triggering authorization");
+        Spotify.getAuthorisation();
+        return; // stop here to wait for authorization
+      }
+      setToken(accessToken);
     }
-    Spotify.search(term).then(results => setSearchResults(results));
+
+    const results = await Spotify.search(term);
+    setSearchResults(results);
   }
 
   return (
