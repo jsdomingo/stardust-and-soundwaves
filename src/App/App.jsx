@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import { useState, useEffect } from 'react';
 import Playlist from '../Playlist/Playlist';
 import SearchResults from '../SearchResults/SearchResults';
@@ -6,10 +6,10 @@ import SearchBar from '../SearchBar/SearchBar';
 import LightMode from '../assets/LightModeDancev2.png';
 import DarkMode from '../assets/DarkModeDancev2.svg';
 import Spotify from '../util/Spotify';
-import WaveText from '../WaveText/WaveText'; // import your WaveText component
+import WaveText from '../WaveText/WaveText'; 
+import Stars from '../Stars/Stars';
 
 function App() {
-  // Existing state
   const [searchResults, setSearchResults] = useState([
     { id: 1, name: 'Example Track Name 1', artist: 'Example Track Artist 1', album: 'Example Track Album 1' },
     { id: 2, name: 'Example Track Name 2', artist: 'Example Track Artist 2', album: 'Example Track Album 2' }
@@ -22,15 +22,14 @@ function App() {
   ]);
 
   const [token, setToken] = useState(null);
-
-  // New state controlling titleBox sliding
   const [slideUp, setSlideUp] = useState(false);
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const [showPlaylist, setShowPlaylist] = useState(false);
+  const [showImages, setShowImages] = useState(false);
 
-  // Timing constants
-  const holdDuration = 3000;  // 3 seconds hold at bottom
-  const waveDuration = 2000;  // 2 seconds wave animation duration
+  const holdDuration = 3000;
+  const waveDuration = 2000;
 
-  // On mount, Spotify auth
   useEffect(() => {
     async function authenticate() {
       const accessToken = await Spotify.getAccessToken();
@@ -43,29 +42,27 @@ function App() {
     authenticate();
   }, []);
 
-  // After hold + wave duration, trigger slide up
   useEffect(() => {
     const timer = setTimeout(() => {
       setSlideUp(true);
+
+      setTimeout(() => setShowSearchBar(true), 500);
+      setTimeout(() => setShowPlaylist(true), 1000);
+      setTimeout(() => setShowImages(true), 1500);
     }, holdDuration + waveDuration);
 
     return () => clearTimeout(timer);
   }, []);
 
-  // Existing functions
   function addTrack(track) {
     const existingTrack = playlistTracks.find((t) => t.id === track.id);
-    const newTrack = playlistTracks.concat(track);
-    if (existingTrack) {
-      console.log("Track is there")
-    } else {
-      setPlaylistTracks(newTrack);
+    if (!existingTrack) {
+      setPlaylistTracks(prev => [...prev, track]);
     }
   }
 
   function removeTrack(track) {
-    const exisitingTrack = playlistTracks.filter((t) => t.id !== track.id);
-    setPlaylistTracks(exisitingTrack);
+    setPlaylistTracks(prev => prev.filter((t) => t.id !== track.id));
   }
 
   function updatePlaylistName(name) {
@@ -86,29 +83,32 @@ function App() {
 
   return (
     <div className='webpage'>
-      {/* Updated titleBox with inline style for sliding */}
       <div
-  className="titleBox"
-  style={{
-    top: slideUp ? 0 : "calc(100% - 65px)",
-    transition: "top 2s ease",
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  }}
->
-  <WaveText text="Star" delay={holdDuration} />
-  <WaveText text="dust & Sound" delay={holdDuration + 300} className="highlight" />
-  <WaveText text="waves" delay={holdDuration + 1000} />
-</div>
-
+        className="introOverlay"
+        style={{ top: slideUp ? "-100vh" : "0" }}
+      >
+        <Stars />
+        <div
+          className="titleBox"
+          style={{ top: slideUp ? 0 : "calc(100% - 65px)" }}
+        >
+          <WaveText text="Star" delay={holdDuration} />
+          <WaveText text="dust & Sound" delay={holdDuration + 300} className="highlight" />
+          <WaveText text="waves" delay={holdDuration + 1000} />
+        </div>
+      </div>
 
       <div className="app">
-        <div className='searchBar'>
+        <div className={`searchBar ${showSearchBar ? "fade-in" : "hidden"}`}>
           <SearchBar onSearch={search} />
         </div>
-        <div className="appPlaylist">
-          <img src={DarkMode} alt="dance1" className='danceOne' />
+
+        <div className={`appPlaylist ${showPlaylist ? "fade-in" : "hidden"}`}>
+          <img
+            src={DarkMode}
+            alt="dance1"
+            className={`danceOne ${showImages ? "fade-in-up" : "hidden-up"}`}
+          />
           <SearchResults userSearchResults={searchResults} onAdd={addTrack} />
           <Playlist 
             playlistName={playlistName} 
@@ -117,7 +117,11 @@ function App() {
             onNameChange={updatePlaylistName} 
             onSave={savePlaylist}
           />
-          <img src={LightMode} alt="dance2" className='danceTwo'/>
+          <img
+            src={LightMode}
+            alt="dance2"
+            className={`danceTwo ${showImages ? "fade-in-up" : "hidden-up"}`}
+          />
         </div>
       </div>
     </div>
