@@ -3,7 +3,23 @@
     padding: 20px;
     border-radius: 8px;
     box-sizing: border-box;
-    max-height: 540px;
+    max-height: 410px;
     overflow-y: auto;
-
 }
+
+/* 🔷 Medium screens (≤1280px) */
+/* @media (max-width: 1280px) {
+    .tracklist {
+      max-height: 480px;
+      padding: 16px;
+    }
+  } */
+
+/* 🔷 Small/mobile screens (≤768px) */
+  /* @media (max-width: 768px) {
+    .tracklist {
+      max-height: 400px;
+      padding: 12px;
+      font-size: 0.9rem;
+    }
+  } */

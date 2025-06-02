@@ -20,7 +20,6 @@
 
   }
 
-
   .save{
     background-color: #b56ed8;
     padding: 0.77rem 0;
@@ -32,6 +31,7 @@
     border: none;
     transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
     margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   .save:hover {
@@ -48,3 +48,34 @@
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
     font-weight: bold;
   }
+
+/* 🔷 Medium screens (≤1280px)
+@media (max-width: 1280px) {
+  .titleInput {
+    font-size: 1.3rem;
+  }
+
+  .save {
+    font-size: 0.9rem;
+    padding: 0.65rem 0;
+  }
+} */
+
+/* 🔷 Small/mobile screens (≤768px) */
+@media (max-width: 768px) {
+  .titleInput {
+    /* font-size: 1.1rem; */
+    padding: 0.5rem;
+  }
+
+  .save {
+    font-size: 0.8rem;
+    padding: 0.6rem 0;
+    width: 90%;
+    align-self: center;
+  }
+
+  .playlist {
+    gap: 6px;
+  }
+}

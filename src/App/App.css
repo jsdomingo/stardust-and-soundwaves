@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 1440px;
   min-width: 420px;
   max-height: 1280px;
   margin: 0 auto;
@@ -74,12 +74,14 @@
 .app {
   display: flex;
   flex-direction: column;
-  margin: 64px 64px 64px; /* top, right/left, bottom */
+  border: 5px solid blueviolet;
 }
 
 .searchBar{
   margin: 0;
   padding: 0;
+  height: auto;
+  border: 5px solid pink;
 }
 
 .appPlaylist {
@@ -87,7 +89,12 @@
   grid-template-columns: 1fr 1.8fr 1.8fr 1fr;
   max-width: 100%;
   gap: 16px;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
+  border: 5px solid orange;
+
+    /* Add this: */
+    max-height: 570px;       /* or whatever height you prefer */
+    overflow-y: auto;
 }
 
 /* Style all direct children of .appPlaylist */
@@ -102,23 +109,7 @@
   object-fit: cover;
   display: block;
   margin: auto; 
-}
-
-
-/* Responsive behavior for smaller screens */
-@media (max-width: 900px) {
-  .appPlaylist {
-    grid-template-columns: 1fr; /* stack items vertically */
-  }
-  .danceOne, .danceTwo {
-    max-height: 330px;
-    max-width: 220px;
-  }
-  .searchBar{
-    max-height: 300px;
-    margin-top: 100px;
-  }
-
+  min-height: 300px;
 }
 
 /* Fade In + Up Animations */
@@ -141,3 +132,135 @@
   opacity: 0;
   transform: translateY(20px);
 }
+
+
+
+/* 🔷 Medium screens (≤1280px) */
+/* @media (max-width: 1280px) {
+  .app {
+    margin: 48px 32px;
+  }
+
+  .appPlaylist {
+    gap: 12px;
+    max-height: 700px;
+  }
+  
+  .danceOne,
+  .danceTwo {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 300px;
+  }
+
+}
+
+@media (max-width: 1000px) {
+  .appPlaylist {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .danceOne,
+  .danceTwo {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 300px;
+  }
+
+} */
+
+@media (max-width: 1107px) {
+  .app {
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .appPlaylist {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;  /* two columns */
+    grid-template-rows: auto auto;     /* two rows */
+    gap: 16px;
+  }
+
+  .danceOne {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 350px;
+  }
+
+  .danceTwo {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 350px;
+  }
+
+  .searchResult {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    overflow-y: auto;  /* if needed */
+  }
+
+  .playlist {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    max-height: 570px;
+    overflow-y: auto;
+  }
+}
+
+
+/* 🔷 Small/mobile screens (≤768px) */
+@media (max-width: 768px) {
+  .app {
+    display: grid;
+    grid-template-columns: 1fr;      /* single column */
+    grid-template-rows: auto auto auto auto; /* 4 rows, one for each section */
+    gap: 16px;
+    margin: 32px 16px;
+      height: calc(100vh - 65px); /* Adjust to exclude fixed header height */
+      overflow-y: auto;
+  }
+
+  /* Stack items in order vertically */
+  .danceOne {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 300px;
+  }
+
+  .searchResult {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .danceTwo {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 300px;
+  }
+
+  .playlist {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+  }
+
+  .appPlaylist {
+    grid-template-columns: 1fr;
+    padding-top: 1.5rem;
+    gap: 10px;
+  }
+
+  .searchBar {
+    margin-top: 80px;
+  }
+}
+
+
