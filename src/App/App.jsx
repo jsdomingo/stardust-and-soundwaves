@@ -99,7 +99,7 @@ function App() {
       </div>
 
       <div className="app">
-        <div className={`searchBar ${showSearchBar ? "fade-in" : "hidden"}`}>
+        <div className={`searchBar ${showSearchBar ? "fade-in-up" : "hidden-up"}`}>
           <SearchBar onSearch={search} />
         </div>
 
