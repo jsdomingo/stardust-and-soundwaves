@@ -8,38 +8,17 @@ import DarkMode from '../assets/DarkModeDancev2.svg';
 import Spotify from '../util/Spotify';
 
 function App() {
-  const [searchResults, setSearchResults] = useState(
-[    {
-      id: 1,
-      name: 'Example track name 1',
-      artist: 'example track artist 1',
-      album: 'example track album 1'
-    },
-    {
-      id: 2,
-      name: 'Example track name 2',
-      artist: 'example track artist 2',
-      album: 'example track album 2'
-    }]
-  );
+  const [searchResults, setSearchResults] = useState([
+    { id: 1, name: 'Example Track Name 1', artist: 'Example Track Artist 1', album: 'Example Track Album 1' },
+    { id: 2, name: 'Example Track Name 2', artist: 'Example Track Artist 2', album: 'Example Track Album 2' }
+  ]);
 
-  const [playlistName, setPlaylistName] =  useState("example Playlist")
+  const [playlistName, setPlaylistName] = useState("Example Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([
-    {
-      id: 1,
-      name: "example playlist 1",
-      artist: 'example playlist artist 1',
-      album: 'example playlist album 1'
+    { id: 1, name: "Example Playlist 1", artist: 'Example Playlist Artist 1', album: 'Example Playlist Album 1' },
+    { id: 2, name: "Example Playlist 2", artist: 'Example Playlist Artist 2', album: 'Example Playlist Album 2' }
+  ]);
 
-    },
-    {
-      id: 2,
-      name: "example playlist 2",
-      artist: 'example playlist artist 2',
-      album: 'example playlist album 2'
-
-    }
-  ])
   const [token, setToken] = useState(null);
 
     // On mount, try to get access token or redirect for auth
