@@ -14,15 +14,34 @@
   width: 100%;
 }
 
-.titleBox{
+.titleBox {
+  position: fixed;
+  top: calc(100% - 65px); /* just below viewport */
+  left: 0;
+  width: 100%;
   height: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: purple;
-  z-index: 1000; /* Ensures it stays above other elements */
-
+  z-index: 1000;
+  opacity: 1; /* visible */
+  transition: top 2s ease; /* slide up transition */
 }
+
+
+@keyframes slideUpWithPause {
+  0% {
+    top: calc(100% - 65px);   /* just below viewport */
+  }
+  60% {
+    top: calc(100% - 65px);   /* hold here for 3s */
+  }
+  100% {
+    top: 0;                   /* slide up into place */
+  }
+}
+
 
 .title {
   text-align: center;
