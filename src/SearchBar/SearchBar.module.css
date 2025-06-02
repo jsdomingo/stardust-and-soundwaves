@@ -5,6 +5,7 @@
     align-items: center;
     padding-top: 6.94rem;
     margin-bottom: 6.33rem;
+    
 }
 
 
@@ -15,8 +16,17 @@
     font-size: 1rem;
     color: #010c3f;
     margin-bottom: 2.22rem;
-    border: 1px dotted red;
+    outline: none;
+    border: none; /* remove border */
+    box-shadow: 0 0 5px 2px #d995f8; /* highlight on focus */
+    border-radius: 4px; /* optional: soften corners */
+    transition: box-shadow 0.3s ease;
 }
+
+
+.searchInput:focus {
+    box-shadow: 0 0 5px 2px #af01ff; /* highlight on focus */
+  }
 
 .searchBtn {
     background-color: #d995f834;
@@ -28,7 +38,7 @@
     text-transform: uppercase;
     cursor: pointer;
     border: none;
-    outline: none;
+
     transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
 
