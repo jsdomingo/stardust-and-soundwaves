@@ -63,7 +63,6 @@ const Spotify = {
     authUrl.search = new URLSearchParams(params).toString();
     window.location.href = authUrl.toString();
   },
-
   async getAccessToken() {
     // If a token fetch is already in progress, return that promise
     if (tokenPromise) {
@@ -145,7 +144,6 @@ const Spotify = {
 
     return tokenPromise;
   },
-
   getStoredToken() {
     const token = localStorage.getItem('access_token');
     const timestamp = localStorage.getItem('token_timestamp');
@@ -161,7 +159,6 @@ const Spotify = {
 
     return token;
   },
-
   async search(term) {
     const accessToken = await this.getAccessToken();
     if (!accessToken) {
@@ -196,6 +193,34 @@ const Spotify = {
       return [];
     }
   },
+  savePlaylist(name, trackUris){
+    if (!name || ! trackUris) return ;
+    const aToken = Spotify.getAccessToken();
+    const header = {Authorization: `Bearer ${aToken}`};
+    let userId;
+    return fetch(`https:api//api.spotify/com/v1/me`, {headers: header})
+    .then(response => response.json())
+    .then((jsonResponse) => {
+      userId = jsonResponse.id;
+      let playlistsId;
+      return fetch(`https://api/spotify/v1/users/${userId}/playlists`,
+        {
+          headers: header,
+          method: "POST",
+          body: JSON.stringify(name)
+        }
+      ) .then((response) => response.json())
+        .then((jsonResponse) => {
+          playlistsId = jsonResponse.id
+          return fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+            headers: header,
+            method: "POST",
+            body: JSON.stringify({uris: trackUris}),
+          })
+
+        })
+    })
+  }
 };
 
 export default Spotify;
