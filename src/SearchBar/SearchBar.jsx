@@ -1,16 +1,13 @@
 import styles from './SearchBar.module.css';
-import { useState } from 'react';
 
-export default function SearchBar(props) {
-  const [term, setTerm] = useState("");
-
-  function handleTermChange({ target }) {
-    setTerm(target.value);
+export default function SearchBar({ term, onTermChange, onSearch }) {
+  function handleChange(event) {
+    onTermChange(event.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault(); // prevents page reload
-    props.onSearch(term);
+    onSearch(term);
   }
 
   return (
@@ -19,7 +16,7 @@ export default function SearchBar(props) {
         <input
           className={styles.searchInput}
           placeholder="Enter Your Vibe"
-          onChange={handleTermChange}
+          onChange={handleChange}
           value={term}
         />
         <button
