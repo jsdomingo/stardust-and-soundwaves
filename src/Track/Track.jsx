@@ -7,9 +7,10 @@ export default function Track(props){
 
     function renderAction() {
         if(props.isRemoval) {
-            return <button className={styles.trackAction} onClick={props.passTrack}>+</button>
+            //Remove button
+            return <button className={styles.trackAction} onClick={() => props.onRemove(props.track)}>-</button>
         } else {
-            return <button className={styles.trackAction} onClick={props.passTrackRemove}>-</button>
+            return <button className={styles.trackAction} onClick={() => props.onAdd(props.track)}>+</button>
         }
     }
 
