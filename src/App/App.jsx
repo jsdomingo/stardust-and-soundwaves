@@ -87,6 +87,12 @@ function App() {
             onSave={savePlaylist}
           />
           <img src={LightMode} alt="dance2" className='danceTwo'/>
+      <div className='webpage'>
+      <div className={`titleBox ${titleSlidePhase}`}>
+  <WaveText text="Star" delay={0} play={titleSlidePhase !== 'offscreen'} />
+  <WaveText text="dust & Sound" className="highlight" delay={300} play={titleSlidePhase !== 'offscreen'} />
+  <WaveText text="waves" delay={1000} play={titleSlidePhase !== 'offscreen'} />
+</div>
         </div>
       </div>
     </div>
