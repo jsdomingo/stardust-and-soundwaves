@@ -1,10 +1,11 @@
 import './App.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Playlist from '../Playlist/Playlist';
 import SearchResults from '../SearchResults/SearchResults';
 import SearchBar from '../SearchBar/SearchBar';
 import LightMode from '../assets/LightModeDancev2.png';
 import DarkMode from '../assets/DarkModeDancev2.svg';
+import Spotify from '../util/Spotify';
 
 function App() {
   const [searchResults, setSearchResults] = useState(
@@ -39,6 +40,23 @@ function App() {
 
     }
   ])
+  const [token, setToken] = useState(null);
+
+    // On mount, try to get access token or redirect for auth
+    useEffect(() => {
+      async function authenticate() {
+        const accessToken = await Spotify.getAccessToken();
+        if (!accessToken) {
+          // No token, start authorization flow
+          Spotify.getAuthorisation();
+        } else {
+          setToken(accessToken);
+        }
+      }
+      authenticate();
+    }, []);
+
+
   function addTrack(track) {
     const existingTrack = playlistTracks.find((t) => t.id === track.id);
     const newTrack = playlistTracks.concat(track);
@@ -68,36 +86,38 @@ function App() {
   }
 
   function search(term){
-    console.log(term);
+    if (!token) {
+      console.error('No access token available for search');
+      return;
+    }
+    Spotify.search(term).then(results => setSearchResults(results));
   }
   
   return (
     <>
       <div className="titleBox">
-      <h1 className="title">Star<span className="highlight">dust & Sound</span>waves</h1>
+        <h1 className="title">Star<span className="highlight">dust & Sound</span>waves</h1>
       </div>
 
       <div className="app">
-        <div  className='searchBar'>
-        <SearchBar onSearch={search} />
+        <div className='searchBar'>
+          <SearchBar onSearch={search} />
         </div>
         <div className="appPlaylist">
-        <img src={DarkMode} alt="dance1" className='danceOne' />
-      <SearchResults userSearchResults={searchResults} onAdd={addTrack} />
-      <Playlist 
-      playlistName={playlistName} 
-      playlistTracks={playlistTracks} 
-      onRemove={removeTrack} 
-      onNameChange={updatePlaylistName} 
-      onSave={savePlaylist}
-      />
-      <img src={LightMode} alt="dance2" className='danceTwo'/>
+          <img src={DarkMode} alt="dance1" className='danceOne' />
+          <SearchResults userSearchResults={searchResults} onAdd={addTrack} />
+          <Playlist 
+            playlistName={playlistName} 
+            playlistTracks={playlistTracks} 
+            onRemove={removeTrack} 
+            onNameChange={updatePlaylistName} 
+            onSave={savePlaylist}
+          />
+          <img src={LightMode} alt="dance2" className='danceTwo'/>
+        </div>
       </div>
-      </div>
-
-
     </>
-  )
+  );
 }
 
 export default App
