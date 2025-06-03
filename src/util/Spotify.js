@@ -17,7 +17,7 @@
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 const redirectUri = import.meta.env.VITE_SPOTIFY_REDIRECT_URI;
 
-const scope = 'user-read-private user-read-email';
+const scope = 'user-read-private user-read-email playlist-modify-private playlist-modify-public';
 
 const generateRandomString = (length) => {
   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -193,34 +193,72 @@ const Spotify = {
       return [];
     }
   },
-  savePlaylist(name, trackUris){
-    if (!name || ! trackUris) return ;
-    const aToken = Spotify.getAccessToken();
-    const header = {Authorization: `Bearer ${aToken}`};
-    let userId;
-    return fetch(`https:api//api.spotify/com/v1/me`, {headers: header})
-    .then(response => response.json())
-    .then((jsonResponse) => {
-      userId = jsonResponse.id;
-      let playlistsId;
-      return fetch(`https://api/spotify/v1/users/${userId}/playlists`,
-        {
-          headers: header,
-          method: "POST",
-          body: JSON.stringify(name)
-        }
-      ) .then((response) => response.json())
-        .then((jsonResponse) => {
-          playlistsId = jsonResponse.id
-          return fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-            headers: header,
-            method: "POST",
-            body: JSON.stringify({uris: trackUris}),
-          })
+  async savePlaylist(name, trackUris) {
+    const accessToken = await this.getAccessToken();
 
-        })
-    })
+  
+    if (!accessToken) {
+      console.error('No access token found. Please log in.');
+      // Optionally redirect to login here
+      return null;
+    }
+  
+    const headers = {
+      'Authorization': `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    };
+  
+    try {
+      // 1. Create the playlist
+      const playlistRes = await fetch('https://api.spotify.com/v1/me/playlists', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          name,
+          public: false,
+          description: 'Created with StarDust',
+        }),
+      });
+  
+      if (!playlistRes.ok) {
+        if (playlistRes.status === 403) {
+          console.warn('Access forbidden: token may have expired or insufficient scopes.');
+          // Handle token expiration or invalid token:
+          // clearTokens();
+          // window.location.href = '/login'; 
+          return null;
+        }
+        throw new Error(`Failed to create playlist: ${playlistRes.statusText}`);
+      }
+  
+      const playlistData = await playlistRes.json();
+  
+      // 2. Add tracks to the newly created playlist
+      const addTracksRes = await fetch(
+        `https://api.spotify.com/v1/playlists/${playlistData.id}/tracks`,
+        {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({
+            uris: trackUris,
+            position: 0, // optional: insert at beginning
+          }),
+        }
+      );
+  
+      if (!addTracksRes.ok) {
+        throw new Error(`Failed to add tracks: ${addTracksRes.statusText}`);
+      }
+  
+      return playlistData; // Success: return playlist info
+  
+    } catch (error) {
+      console.error('Spotify error:', error);
+      return null;
+    }
   }
+  
+  
 };
 
 export default Spotify;
