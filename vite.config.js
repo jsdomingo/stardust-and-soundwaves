@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react(), mkcert()],
   server: {
     https: true,
-    host: env.VITE_SPOTIFY_REDIRECT_URI?.replace(/^https?:\/\//, '').replace(/\/$/, '')
+    host: 'REPLACE_YOUR_URI_HERE'
   }
 });
