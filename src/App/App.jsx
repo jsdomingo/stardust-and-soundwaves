@@ -17,8 +17,8 @@ function App() {
 
   const [playlistName, setPlaylistName] = useState("Example Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([
-    { id: 1, name: "Example Playlist 1", artist: 'Example Playlist Artist 1', album: 'Example Playlist Album 1' },
-    { id: 2, name: "Example Playlist 2", artist: 'Example Playlist Artist 2', album: 'Example Playlist Album 2' }
+    { id: 1, name: 'Example Track Name 1', artist: 'Example Track Artist 1', album: 'Example Track Album 1' },
+    { id: 2, name: 'Example Track Name 2', artist: 'Example Track Artist 2', album: 'Example Track Album 2' }
   ]);
 
   const [token, setToken] = useState(null);

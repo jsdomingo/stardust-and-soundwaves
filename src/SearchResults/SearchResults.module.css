@@ -10,14 +10,7 @@
      margin: 0;
 }
 
-/* 🔷 Medium screens (≤1280px) */
-/* @media (max-width: 1280px) {
-    .resultsContainer {
-      gap: 6px;
-    }
-  } */
-
-  /* 🔷 Small/mobile screens (≤768px) */
+  /* Small/mobile screens (≤768px) */
   @media (max-width: 768px) {
     .resultsContainer {
       gap: 4px;

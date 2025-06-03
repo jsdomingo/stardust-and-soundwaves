@@ -125,42 +125,6 @@
   transform: translateY(20px);
 }
 
-
-
-/* 🔷 Medium screens (≤1280px) */
-/* @media (max-width: 1280px) {
-  .app {
-    margin: 48px 32px;
-  }
-
-  .appPlaylist {
-    gap: 12px;
-    max-height: 700px;
-  }
-  
-  .danceOne,
-  .danceTwo {
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 300px;
-  }
-
-}
-
-@media (max-width: 1000px) {
-  .appPlaylist {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .danceOne,
-  .danceTwo {
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 300px;
-  }
-
-} */
-
 @media (max-width: 1107px) {
   .app {
     height: 100vh;
@@ -195,7 +159,7 @@
   .searchResult {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
-    overflow-y: auto;  /* if needed */
+    overflow-y: auto; 
   }
 
   .playlist {
@@ -206,8 +170,7 @@
   }
 }
 
-
-/* 🔷 Small/mobile screens (≤768px) */
+/* Small/mobile screens (≤768px) */
 @media (max-width: 768px) {
   .app {
     display: grid;

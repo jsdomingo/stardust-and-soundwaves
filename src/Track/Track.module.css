@@ -58,23 +58,7 @@
     padding: 0 10px;
   }
   
-/* 🔷 Medium screens (≤1280px) */
-/* @media (max-width: 1280px) {
-  .track {
-    padding: 8px;
-    max-height: 90px;
-  }
-
-  .trackTitle {
-    font-size: 1em;
-  }
-
-  .trackDescription {
-    font-size: 0.85em;
-  }
-} */
-
-/* 🔷 Small/mobile screens (≤768px) */
+/* Small/mobile screens (≤768px) */
 @media (max-width: 768px) {
   .track {
     flex-direction: column;

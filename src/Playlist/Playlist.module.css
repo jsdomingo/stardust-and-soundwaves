@@ -49,19 +49,7 @@
     font-weight: bold;
   }
 
-/* 🔷 Medium screens (≤1280px)
-@media (max-width: 1280px) {
-  .titleInput {
-    font-size: 1.3rem;
-  }
-
-  .save {
-    font-size: 0.9rem;
-    padding: 0.65rem 0;
-  }
-} */
-
-/* 🔷 Small/mobile screens (≤768px) */
+/* Small/mobile screens (≤768px) */
 @media (max-width: 768px) {
   .titleInput {
     /* font-size: 1.1rem; */
