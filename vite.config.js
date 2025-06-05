@@ -12,6 +12,6 @@ export default defineConfig(({ mode }) => {
       host: env.VITE_SPOTIFY_URI,
       port: 5173, 
     },
-    base: '/stardust-and-soundwaves/',
+    host: 'REPLACE_YOUR_URI_HERE'
   };
 });
