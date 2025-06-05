@@ -3,7 +3,6 @@
 
 This is a web application that lets you search for songs and build personalised Spotify playlists in the browser — no backend required. It uses the Spotify Web API with secure PKCE authentication to let users log in, search for tracks, and save custom playlists to their account.
 
----
 
 ## ✨ Features
 
@@ -12,7 +11,6 @@ This is a web application that lets you search for songs and build personalised 
 - ➕ **Add/remove tracks** to a custom playlist
 - 💾 **Save to Spotify** with a custom name
 
----
 
 ## 🛠 Built With
 
@@ -23,7 +21,6 @@ This is a web application that lets you search for songs and build personalised 
 - PKCE Flow – Secure, backend-free Spotify auth
 - `localStorage` – Session persistence
 
----
 
 ## 🧰 Getting Started
 
@@ -63,13 +60,11 @@ npm run dev -- --host
 You can deploy to any static hosting provider (like [Netlify](https://netlify.com), [Vercel](https://vercel.com), or [GitHub Pages](https://pages.github.com)).
 
 
----
 
 ## 📸 Screenshots / Demo 
 
 > *TODO: Add a short GIF or screenshots of the UI*
 
----
 
 ## 🔮 Future Enhancements
 * 🎭 12 music mood discovery for users to select vibes, with music based on audio features like valence and energy for better mood matching
