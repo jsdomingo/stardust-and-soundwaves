@@ -218,4 +218,8 @@
   .searchBar {
     margin-top: 80px;
   }
+
+  .titleBox{
+    font-size: x-small;
+  }
 }
