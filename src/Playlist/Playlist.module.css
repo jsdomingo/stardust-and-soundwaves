@@ -24,7 +24,7 @@
     background-color: #b56ed8;
     padding: 0.77rem 0;
     border-radius: 54px;
-    font-size: 1 rem;
+    font-size: 1rem;
     text-align: center;
     text-transform: uppercase;
     cursor: pointer;
@@ -47,6 +47,11 @@
     transform: scale(0.95);
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
     font-weight: bold;
+  }
+
+  .darkSave {
+    background-color: #d07de9; /* a nice bright purple/pink for dark mode */
+    color: #ffffff; /* black text for contrast */
   }
 
 /* Small/mobile screens (≤768px) */

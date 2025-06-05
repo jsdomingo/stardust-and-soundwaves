@@ -6,6 +6,8 @@ export default function Playlist(props){
         props.onNameChange(target.value);
     }
 
+    const saveButtonClass = props.darkMode ? `${styles.save} ${styles.darkSave}`: styles.save;
+
     return (
         <div className={styles.playlist}>
             <input 
@@ -20,7 +22,7 @@ export default function Playlist(props){
                 isRemoval={true}
                 darkMode={props.darkMode} 
             />
-            <button className={styles.save} onClick={props.onSave}>Save to Spotify</button>
+            <button className={saveButtonClass} onClick={props.onSave}>Save to Spotify</button>
         </div>
     );
 }
