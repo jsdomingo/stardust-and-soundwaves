@@ -22,9 +22,9 @@
     color: #010c3f;
     margin-bottom: 2.22rem;
     outline: none;
-    border: none; /* remove border */
+    border: none; 
     box-shadow: 0 0 5px 2px #d995f8; /* highlight on focus */
-    border-radius: 4px; /* optional: soften corners */
+    border-radius: 4px; 
     transition: box-shadow 0.3s ease;
 }
 
@@ -60,6 +60,16 @@
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 
+  /* Dark mode support */
+  .darkSearchInput {
+    color: white;
+  }
+  
+  .darkSearchInput::placeholder {
+    color: #ccc;
+  }
+  
+
 /* Small screens: mobile devices */
 @media (max-width: 768px) {
   .searchBar {
@@ -70,14 +80,12 @@
 
   .searchInput {
     width: 90%;
-    /* font-size: 1rem; */
     padding: 0.6rem 0;
     margin-bottom: 1rem;
   }
 
   .searchBtn {
     width: 80%;
-    /* font-size: 0.7rem; */
     padding: 0.6rem 0;
   }
 }

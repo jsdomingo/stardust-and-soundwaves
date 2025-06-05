@@ -21,9 +21,9 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    overflow: hidden;         /* clip overflow */
-    text-overflow: ellipsis;  /* show ... if overflow */
-    white-space: nowrap;      /* keep text in one line */
+    overflow: hidden;  
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
   }
   
   .trackTitle {
@@ -41,6 +41,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  .darkTrackDescription {
+    color: white; 
+  }  
   
   .trackActionWrapper {
     display: flex;
@@ -57,7 +61,7 @@
     cursor: pointer;
     padding: 0 10px;
   }
-  
+
 /* Small/mobile screens (≤768px) */
 @media (max-width: 768px) {
   .track {

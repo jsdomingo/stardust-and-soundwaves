@@ -35,6 +35,23 @@ function App() {
   const wasRedirected = localStorage.getItem("wasRedirected") === "true";
   const savedSearchTerm = localStorage.getItem("pendingSearch");
 
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Initial check
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setDarkMode(prefersDark);
+
+    // Listen for system preference changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e) => {
+      setDarkMode(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
   // Fetch token once on mount
   useEffect(() => {
     async function fetchToken() {
@@ -134,7 +151,8 @@ function App() {
           <SearchBar 
             onSearch={search} 
             term={searchTerm} 
-            onTermChange={setSearchTerm} 
+            onTermChange={setSearchTerm}
+            darkMode={darkMode} 
           />
         </div>
 
@@ -144,14 +162,15 @@ function App() {
             alt="dance1"
             className={`danceOne ${showImages ? "fade-in-up" : "hidden-up"}`}
           />
-          <SearchResults userSearchResults={searchResults} onAdd={addTrack} />
+          <SearchResults userSearchResults={searchResults} onAdd={addTrack} darkMode={darkMode}   />
           <Playlist
-            playlistName={playlistName}
-            playlistTracks={playlistTracks}
-            onRemove={removeTrack}
-            onNameChange={updatePlaylistName}
-            onSave={savePlaylist}
-          />
+              playlistName={playlistName}
+              playlistTracks={playlistTracks}
+              onRemove={removeTrack}
+              onNameChange={updatePlaylistName}
+              onSave={savePlaylist}
+              darkMode={darkMode}
+            />
           <img
             src={LightMode}
             alt="dance2"

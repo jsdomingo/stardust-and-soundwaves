@@ -1,5 +1,5 @@
-import Tracklist from '../Tracklist/Tracklist'
-import styles from '../SearchResults/SearchResults.module.css'
+import Tracklist from '../Tracklist/Tracklist';
+import styles from '../SearchResults/SearchResults.module.css';
 
 export default function SearchResults(props){
     return(
@@ -8,7 +8,9 @@ export default function SearchResults(props){
             <Tracklist
                 userSearchResults={props.userSearchResults} 
                 isRemoval={false} 
-                onAdd={props.onAdd} />
+                onAdd={props.onAdd} 
+                darkMode={props.darkMode}
+            />
         </div>
-    )
+    );
 }
