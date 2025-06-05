@@ -1,11 +1,17 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import mkcert from 'vite-plugin-mkcert';
 
-export default defineConfig({
-  plugins: [react(), mkcert()],
-  server: {
-    https: true,
-    host: 'REPLACE_YOUR_URI_HERE'
-  }
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd());
+
+  return {
+    plugins: [react(), mkcert()],
+    server: {
+      https: true,
+      host: env.VITE_SPOTIFY_URI,
+      port: 5173, 
+    },
+    base: '/stardust-and-soundwaves/',
+  };
 });
