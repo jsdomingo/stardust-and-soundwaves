@@ -155,14 +155,15 @@ function App() {
             alt="dance1"
             className={`danceOne ${showImages ? "fade-in-up" : "hidden-up"}`}
           />
-          <SearchResults userSearchResults={searchResults} onAdd={addTrack} />
+          <SearchResults userSearchResults={searchResults} onAdd={addTrack} darkMode={darkMode}   />
           <Playlist
-            playlistName={playlistName}
-            playlistTracks={playlistTracks}
-            onRemove={removeTrack}
-            onNameChange={updatePlaylistName}
-            onSave={savePlaylist}
-          />
+              playlistName={playlistName}
+              playlistTracks={playlistTracks}
+              onRemove={removeTrack}
+              onNameChange={updatePlaylistName}
+              onSave={savePlaylist}
+              darkMode={darkMode}
+            />
           <img
             src={LightMode}
             alt="dance2"

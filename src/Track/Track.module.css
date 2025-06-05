@@ -41,6 +41,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  .darkTrackDescription {
+    color: white; /* brighter for dark mode */
+  }
   
   .trackActionWrapper {
     display: flex;
@@ -57,7 +61,6 @@
     cursor: pointer;
     padding: 0 10px;
   }
-  
 /* Small/mobile screens (≤768px) */
 @media (max-width: 768px) {
   .track {

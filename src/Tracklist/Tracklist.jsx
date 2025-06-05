@@ -1,8 +1,7 @@
-import Track from '../Track/Track'
-import styles from '../Tracklist/Tracklist.module.css'
+import Track from '../Track/Track';
+import styles from '../Tracklist/Tracklist.module.css';
 
 export default function Tracklist(props){
-    console.log('Tracklist props:', props.userSearchResults);
     return(
       <div className={styles.tracklist}>
         {props.userSearchResults && props.userSearchResults.length > 0 ? (
@@ -12,12 +11,13 @@ export default function Tracklist(props){
               key={track.id} 
               isRemoval={props.isRemoval} 
               onAdd={props.onAdd} 
-              onRemove={props.onRemove} />
+              onRemove={props.onRemove} 
+              darkMode={props.darkMode}
+            />
           ))
         ) : (
           <p>No tracks available</p>
         )}
       </div>
     );
-  }
-  
+}

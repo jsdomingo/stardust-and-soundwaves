@@ -3,7 +3,7 @@ import styles from '../Playlist/Playlist.module.css';
 
 export default function Playlist(props){
     function handleNameChange({target}) {
-        props.onNameChange(target.value)
+        props.onNameChange(target.value);
     }
 
     return (
@@ -18,6 +18,7 @@ export default function Playlist(props){
                 userSearchResults={props.playlistTracks} 
                 onRemove={props.onRemove} 
                 isRemoval={true}
+                darkMode={props.darkMode} 
             />
             <button className={styles.save} onClick={props.onSave}>Save to Spotify</button>
         </div>
