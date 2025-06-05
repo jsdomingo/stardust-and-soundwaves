@@ -1,6 +1,7 @@
 import styles from './SearchBar.module.css';
 
 export default function SearchBar({ term, onTermChange, onSearch, darkMode }) {
+  const searchInputClass = darkMode ? `${styles.searchInput} ${styles.darkSearchInput}`: styles.searchInput;
   function handleChange(event) {
     onTermChange(event.target.value);
   }
@@ -14,7 +15,7 @@ export default function SearchBar({ term, onTermChange, onSearch, darkMode }) {
     <div className={styles.searchBar}>
       <form className={styles.searchForm} onSubmit={handleSubmit}>
         <input
-            className={`${styles.searchInput} ${darkMode ? styles.darkInput : ''}`}
+            className={searchInputClass}
             placeholder="Enter Your Vibe"
             onChange={handleChange}
             value={term}

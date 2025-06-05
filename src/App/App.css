@@ -170,13 +170,6 @@
   }
 }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    color: white;
-  }
-}
-
 /* Small/mobile screens (≤768px) */
 @media (max-width: 768px) {
   .app {

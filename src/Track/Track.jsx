@@ -2,8 +2,8 @@ import styles from '../Track/Track.module.css';
 
 export default function Track(props) {
   const trackDescriptionClass = props.darkMode
-    ? `${styles.trackDescription} ${styles.darkTrackDescription}`
-    : styles.trackDescription;
+  ? `${styles.trackDescription} ${styles.darkTrackDescription}`
+  : styles.trackDescription;
 
   function renderAction() {
     if (props.isRemoval) {

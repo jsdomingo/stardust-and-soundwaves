@@ -38,11 +38,18 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
+    // Initial check
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark) {
-      setDarkMode(true);
-      document.body.classList.add('dark');
-    }
+    setDarkMode(prefersDark);
+
+    // Listen for system preference changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e) => {
+      setDarkMode(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
   // Fetch token once on mount
