@@ -35,6 +35,16 @@ function App() {
   const wasRedirected = localStorage.getItem("wasRedirected") === "true";
   const savedSearchTerm = localStorage.getItem("pendingSearch");
 
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+      setDarkMode(true);
+      document.body.classList.add('dark');
+    }
+  }, []);
+
   // Fetch token once on mount
   useEffect(() => {
     async function fetchToken() {
@@ -134,7 +144,8 @@ function App() {
           <SearchBar 
             onSearch={search} 
             term={searchTerm} 
-            onTermChange={setSearchTerm} 
+            onTermChange={setSearchTerm}
+            darkMode={darkMode} 
           />
         </div>
 

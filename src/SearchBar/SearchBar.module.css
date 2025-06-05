@@ -60,6 +60,17 @@
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 
+  /* Dark mode support */
+  .darkInput {
+    color: white;
+    background-color: #1a1a1a;
+  }
+  
+  .darkInput::placeholder {
+    color: #ccc;
+  }
+  
+
 /* Small screens: mobile devices */
 @media (max-width: 768px) {
   .searchBar {

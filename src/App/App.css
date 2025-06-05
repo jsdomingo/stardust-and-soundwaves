@@ -170,6 +170,13 @@
   }
 }
 
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: white;
+  }
+}
+
 /* Small/mobile screens (≤768px) */
 @media (max-width: 768px) {
   .app {
@@ -189,6 +196,7 @@
     object-fit: contain;
     max-width: 100%;
     max-height: 300px;
+    align-content: center;
   }
 
   .searchResult {
@@ -220,6 +228,7 @@
   }
 
   .titleBox{
-    font-size: x-small;
+    font-size: xx-small;
+    margin: 0 auto;
   }
 }

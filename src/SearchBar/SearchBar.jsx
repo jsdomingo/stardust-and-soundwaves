@@ -1,6 +1,6 @@
 import styles from './SearchBar.module.css';
 
-export default function SearchBar({ term, onTermChange, onSearch }) {
+export default function SearchBar({ term, onTermChange, onSearch, darkMode }) {
   function handleChange(event) {
     onTermChange(event.target.value);
   }
@@ -14,11 +14,11 @@ export default function SearchBar({ term, onTermChange, onSearch }) {
     <div className={styles.searchBar}>
       <form className={styles.searchForm} onSubmit={handleSubmit}>
         <input
-          className={styles.searchInput}
-          placeholder="Enter Your Vibe"
-          onChange={handleChange}
-          value={term}
-        />
+            className={`${styles.searchInput} ${darkMode ? styles.darkInput : ''}`}
+            placeholder="Enter Your Vibe"
+            onChange={handleChange}
+            value={term}
+          />
         <button
           className={styles.searchBtn}
           type="submit"
