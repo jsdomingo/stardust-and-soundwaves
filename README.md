@@ -63,7 +63,7 @@ You can deploy to any static hosting provider (like [Netlify](https://netlify.co
 
 ## 📸 Screenshots / Demo 
 
-> *TODO: Add a short GIF or screenshots of the UI*
+![Demo](public/SpotifyDemo.gif)
 
 
 ## 🔮 Future Enhancements

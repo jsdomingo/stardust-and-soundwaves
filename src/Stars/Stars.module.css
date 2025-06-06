@@ -15,7 +15,7 @@
     background-color: white;
     border-radius: 50%;
     opacity: 0.8;
-    animation: twinkle 2s infinite alternate;
+    animation: twinkle 1s infinite alternate;
   }
   
   @keyframes twinkle {
